@@ -1,0 +1,73 @@
+<% include partials/header %>
+<br>
+<div class="container">
+
+    <div class="container">
+        <form class="form-horizontal" action="/maids-log/maid" method="POST">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Maid Id: </label>
+                <div class="col-sm-10">
+                    <input style="width:60%" type="text" class="form-control" name="uid" value="<%=maid.uid%>" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Name: </label>
+                <div class="col-sm-10">
+                    <input style="width:60%" type="text" class="form-control" name="maidname" value="<%=maid.name%>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Age:</label>
+                <div class="col-sm-10">
+                    <input style="width:60%" type="text" class="form-control" name="age" value="<%=maid.age%>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Contact:</label>
+                <div class="col-sm-10">
+                    <input style="width:60%" type="text" class="form-control" name="contact" value="<%=maid.contact%>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Work Area:</label>
+                <div class="col-sm-10">
+                    <input style="width:60%" type="text" class="form-control" name="locality" value="<%=maid.workarea%>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Work Types:</label>
+                <div class="col-sm-10">
+                    <ul style="border: 1px solid lightgrey; width:60%">
+                        <% maid.worktype.forEach(function(work) { %>
+                            <li><%= work %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Current Jobs:</label>
+                <div class="col-sm-10">
+                    <ul style="border: 1px solid lightgrey; width:60%">
+                        <% maid.currentjobs.forEach(function(user) { %>
+                            <li><%= user %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-success" style="width:60%">Update</button>
+                </div>
+            </div>
+        </form>
+
+        <form action="/maids-log/<%=maid.uid%>/delete_maid" method="POST">
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-danger" style="width:60%">Delete Maid</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

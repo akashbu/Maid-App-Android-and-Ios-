@@ -1,0 +1,117 @@
+<% include partials/header %>
+
+<div class="container">
+
+    <div class="container" style="border:1px solid grey; padding:10px">
+
+        <center>
+            <h5 style="font-weight:bold">Register New Maid:</h5>
+        </center>
+        <br>
+        <form class="form-horizontal" action="/add_maid" method="POST">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Name: </label>
+                <div class="col-sm-10">
+                    <input style="width:80%" type="text" class="form-control" name="maidname" placeholder="Name"
+                        required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Age:</label>
+                <div class="col-sm-10">
+                    <input style="width:80%" type="text" class="form-control" name="age" placeholder="Age" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Contact No:</label>
+                <div class="col-sm-10">
+                    <input style="width:80%" type="text" class="form-control" name="contact" placeholder="Contact"
+                        required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Work Area:</label>
+                <div class="col-sm-10">
+                    <input style="width:80%" type="text" class="form-control" name="workarea" placeholder="Work Area"
+                        required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Type of Work:</label>
+                <div class="col-sm-6">
+                    <div class="checkbox">
+                        <label><input name="worktype" type="checkbox" value="cook">Cooking</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input name="worktype" type="checkbox" value="wash">Washing</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input name="worktype" type="checkbox" value="hk">House Keeping</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input name="worktype" type="checkbox" value="child">Child Care</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input name="worktype" type="checkbox" value="elder">Elderly Care</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-success" style="width:80%">Add Maid</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <br>
+    <hr style="border: 1px solid grey;" />
+
+    <div class="container">
+        <center>
+            <h5 style="font-weight:bold">Registered Maids' List</h5>
+        </center>
+        <br>
+        <table style="width:100%; border:2px solid grey;">
+            <tr style="border:1px solid grey;">
+                <th>UID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Contact</th>
+                <th>Workarea</th>
+                <th>Worktype</th>
+            </tr>
+
+            <% maidData.forEach(function(element) { %>
+            <tr style="border:1px solid grey;">
+                <td> <a href="/maids-log/<%=element.uid%>"><%= element.uid %> </a> </td>
+                <td>
+                    <%= element.name %>
+                </td>
+                <td>
+                    <%= element.age %>
+                </td>
+                <td>
+                    <%= element.contact %>
+                </td>
+                <td>
+                    <%= element.workarea %>
+                </td>
+                <td>
+                    <%= element.worktype %>
+                </td>
+            </tr>
+            <% }) %>
+
+        </table>
+
+    </div>
+
+
+
+</div>
+
+<% include partials/footer %>
